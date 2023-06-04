@@ -1,8 +1,10 @@
 import mock from './src/mocks/cesta'
-import { StatusBar,SafeAreaView, View } from 'react-native';
+import { StatusBar,SafeAreaView } from 'react-native';
 import Cesta  from './src/Telas/Cesta/index';
 import React from "react"
 import { useFonts, Montserrat_400Regular_Italic ,Montserrat_700Bold } from '@expo-google-fonts/montserrat';
+import Item from './src/Telas/Cesta/Components/Item';
+import img from './assets/splash.png'
 
 export default function App() {
   const[fontCarregada]=useFonts({
@@ -10,12 +12,15 @@ export default function App() {
     'MontserratBold':Montserrat_700Bold,
   });
   if(!fontCarregada){
-    return<View/>
+    return <>
+    {img}    
+    </>    
   }
   return (
-    <SafeAreaView >
+    <SafeAreaView style={{flex:1}}>
       <StatusBar/>
-      <Cesta {...mock}/>                 
+      <Cesta {...mock}/> 
+      <Item {...mock}/>                
     </SafeAreaView>
   );
 }
